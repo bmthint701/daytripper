@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Search from './Search';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <h2>Where do you want to go?</h2>
+        <Search />
+        {/* <h2>Where do you want to go?</h2> */}
       </div>
     );
   }

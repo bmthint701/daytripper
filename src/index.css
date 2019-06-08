@@ -64,3 +64,7 @@ ul.header li a {
 .buttons:hover:nth-child(3) {
   background-color: #C0DFA1;
 }
+
+.search-bar::-webkit-input-placeholder {
+    color: black;
+}
