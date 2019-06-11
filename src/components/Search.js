@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { searchActivities } from "../actions/activities"
 import { connect } from "react-redux"; 
+import Results from "./Results"
 /* global google */
 
 class Search extends Component {
@@ -31,7 +32,16 @@ class Search extends Component {
     console.log(this.props);
   }
 
+  
+
   render() {
+    const resultsBox = this.state.activities.length === 0 ? 
+      null
+      :
+      this.state.activities.map(item =>{
+        return <Results item={item} />
+      })
+    
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -40,6 +50,9 @@ class Search extends Component {
           <input type='text' className='search-bar' name='location' placeholder='Where are you?' value={this.state.location} onChange={this.handleChange} />
           <input type='submit' value="Submit" />
         </form>
+        <ul>
+        {resultsBox}
+        </ul>
         
       </div>
     );
