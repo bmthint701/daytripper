@@ -4,10 +4,10 @@ export const SEARCH_ACTIVITIES_SUCCESS = "SEARCH_ACTIVITIES_SUCCESS";
 export const SEARCH_ACTIVITIES_FAIL = "SEARCH_ACTIVITIES_FAIL";
 
 
-function searchActivitiesSuccess(customers) {
+function searchActivitiesSuccess(activities) {
   return {
     type: SEARCH_ACTIVITIES_SUCCESS,
-    customers
+    activities
   };
 }
 
@@ -16,6 +16,7 @@ function searchActivitiesFail() {
     type: SEARCH_ACTIVITIES_FAIL
   };
 }
+
 
 
 export function searchActivities(query, location) {
@@ -27,7 +28,6 @@ export function searchActivities(query, location) {
         }
       })
       .then(response => {
-        alert(response.data);
         dispatch(searchActivitiesSuccess(response.data));
       })
       .catch(error => {
