@@ -20,12 +20,14 @@ function searchActivitiesFail() {
 
 
 export function searchActivities(query, location) {
+  
   return (dispatch, getState) => {
     axios
       .get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}%20near%20${location}&key=AIzaSyDXlfj6hb4OJI1WozHCIMFHrAGL2rn9qlA`, {
-        headers: {
-          Authorization: getState().auth.authHash
-        }
+        headers: {'Access-Control-Allow-Origin': '*',
+        crossDomain: true,
+        'Content-Type': 'application/json',
+      }
       })
       .then(response => {
         dispatch(searchActivitiesSuccess(response.data));

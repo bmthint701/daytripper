@@ -1,14 +1,26 @@
 import React, { Component } from "react";
 import { searchActivities } from "../actions/activities"
 import { connect } from "react-redux"; 
+/* global google */
 
 class Search extends Component {
   state = {
     activity: '',
-    location: ''
+    location: '',
+    activities: []
   }
   handleSubmit = () => {
-    this.props.searchActivities(this.state.activity, this.state.location);
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+    const request = { query: `${this.state.activity} near ${this.state.location}` }
+    service.textSearch(request, this.submitActivities);
+    // this.props.searchActivities(this.state.activity, this.state.location);
+  }
+
+  submitActivities = (results, status) =>{
+    console.log(results);
+    console.log(status);
+    this.setState({activities: results});
+    console.log(this.state);
   }
 
   handleChange = (event) => {
