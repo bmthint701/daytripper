@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 });
 
 const middleware = applyMiddleware(
-  promiseMiddleware(),
+  promiseMiddleware,
   thunkMiddleware,
   logger
 );
